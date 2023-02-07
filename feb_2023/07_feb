@@ -1,0 +1,17 @@
+class Solution:
+    def maxLength(self,arr,n):
+        #code here
+        pos = neg = 0
+        result = 0
+        for i in range(n):
+            if arr[i]==0:
+                pos, neg = 0,0
+            elif arr[i]>0:
+                pos+=1
+                if (neg): neg+=1
+            else:
+                pos, neg = neg, pos
+                neg+=1
+                if (pos): pos+=1
+            result= max(result, pos)
+        return result
