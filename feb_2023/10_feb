@@ -1,0 +1,14 @@
+class Solution:
+    def maxInstance(self, s : str) -> int:
+        b= "balon"
+        ins= []
+        correct = [1,1,2,2,1]
+        for i in b:
+            a = s.count(i)
+            ins.append(a)
+        mini = min(ins)
+        res = [ins[i]//correct[i] for i in range(5) if ins[i]/correct[i]>=1]
+        if len(res)==5:
+            return min(res)
+        
+        return 0
