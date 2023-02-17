@@ -1,0 +1,6 @@
+class Solution():
+    def solve(self, N, k, geek_num):
+        geek_num += [0 for i in range(N-len(geek_num))]
+        for i in range(k,N):
+            geek_num[i] = sum(geek_num[i-k:i])
+        return geek_num[N-1]
