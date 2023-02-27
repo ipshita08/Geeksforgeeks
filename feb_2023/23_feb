@@ -1,0 +1,28 @@
+//User function Template for C++
+
+//User function Template for C++
+
+class Solution {
+    int mod=1e9+7;
+  public:
+    int solve(int x,int y,vector<vector<int>> &grid, vector<vector<int>> &dp){
+        if(x<0 || y<0 || grid[x][y]==0) return 0;
+        if(x==0 && y==0 && grid[0][0]==1)
+            return 1;
+        if(dp[x][y]!=-1) return dp[x][y];
+        
+        int up=solve(x,y-1,grid,dp);
+        int left = solve(x-1,y,grid,dp);
+        return dp[x][y]=(up+left)%mod;
+        
+    }
+  
+    int uniquePaths(int n, int m, vector<vector<int>> &grid) {
+        // code here
+        if(grid[0][0]==0 || grid[n-1][m-1]==0)
+            return 0;
+        vector<vector<int>> dp(n+1,vector<int>(m+1,-1));
+        
+        return solve(n-1,m-1,grid,dp);
+    }
+};
