@@ -1,0 +1,27 @@
+#User function Template for python3
+
+class Solution:
+    def getBSTNode(self, root, arr):
+        if root == None:
+            return
+        
+        self.getBSTNode(root.left, arr)
+        arr.append(root.data)
+        self.getBSTNode(root.right, arr)
+        
+    def updateBST(self, node, arr):
+        if node == None: 
+            return
+        
+        self.updateBST(node.left, arr)
+        node.data = arr.pop(len(arr) - 1)
+        self.updateBST(node.right, arr)
+        
+    
+    def correctBST(self, root):
+        # code here
+        arr = []
+        self.getBSTNode(root, arr)
+        arr = sorted(arr, reverse=True)
+        self.updateBST(root, arr)
+        return root
